@@ -6,16 +6,16 @@ var runSequence = require('run-sequence');
 var g;
 
 //STARTS GHOST SERVER
-gulp.task('ghost:start', function (callback) {
+gulp.task('ghost:start', (callback) => {
   runSequence(
     'sass:css',
-    function () {
+     () => {
       g = ghost({
         config: path.join(__dirname, '../ghost-dev-config.js')
       });
 
-      g.then(function (ghostServer) {
-        ghostServer.start().then(function () {
+      g.then((ghostServer) => {
+        ghostServer.start().then(() => {
           runSequence('browser-sync');
         });
       });
@@ -26,9 +26,9 @@ gulp.task('ghost:start', function (callback) {
 });
 
 //RESTARTS GHOST SERVER
-gulp.task('ghost:restart', function (callback) {
-  g.then(function (ghostServer) {
-    ghostServer.stop().then(function (ghostServer) {
+gulp.task('ghost:restart', (callback) => {
+  g.then((ghostServer) => {
+    ghostServer.stop().then((ghostServer) => {
       ghostServer.start();
     });
   });
