@@ -1,8 +1,8 @@
-const config = {
+var config = {
   paths: {
     src: './src/',
     public: './public',
-    assets: './public/assets/'
+    assets: './public/assets/',
   }
 }
 

@@ -1,10 +1,9 @@
-const gulp = require('gulp');
-const plumber = require('gulp-plumber');
-const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');
-const config = require('../gulpconfig');
-
-const run = require('gulp-run');
+var gulp = require('gulp');
+var plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var config = require('../gulpconfig');
+var run = require('gulp-run');
 
 gulp.task('sass:css', () => {                                                   //Sass to CSS task
   return gulp.src(config.paths.src + 'scss/app.scss')
