@@ -1,0 +1,60 @@
+$base-font-size: 16px !default;
+
+$perfect-fourth-typescale-map: (
+  '6'  : 0.422rem,
+  '9'  : 0.563rem,
+  '12' : 0.75rem,
+  '16' : 1em,
+  '21' : 1.333rem,
+  '28' : 1.777rem,
+  '38' : 2.369rem,
+  '51' : 3.157rem,
+  '67' : 4.209rem,
+  '90' : 5.61rem
+);
+
+@function rem($px) {
+  @return ($px / $base-font-size) * 1rem;
+}
+
+@function em($px) {
+  @return ($px / $base-font-size) * 1em;
+}
+
+@mixin futura {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+@mixin caslon {
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+}
+
+@mixin font-size($size) {
+  @if map-has-key($perfect-fourth-typescale-map, $size) {
+    font-size: map-get($perfect-fourth-typescale-map, $size);
+  }
+  @else {
+    @warn 'Invalid scale step';
+  }
+}
+
+@mixin line-height($el) {
+  @if $el == 'heading' {
+    line-height: 1.25;
+  } @else if $el == 'body' {
+    line-height: 1.5;
+  } @else {
+    @warn 'Invalid argument used for @mixin line-height($el). Please use "heading" or "body".';
+  }
+}
+
+// Only applied to bold weight text
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Only applied to h1, h2, h3, bold weights and always to All Caps.
+@mixin letter-spacing {
+  letter-spacing: .5px;
+}
